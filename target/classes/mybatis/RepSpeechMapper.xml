@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.druid.test.mapper.RepSpeechMapper">
+	<resultMap id="rm" type="com.druid.test.beans.RepSpeech">
+		<result property="id" jdbcType="INTEGER" column="id"/>
+		<result property="bankId" jdbcType="INTEGER" column="bank_id"/>
+		<result property="userId" jdbcType="INTEGER" column="user_id"/>
+		<result property="speechType" jdbcType="VARCHAR" column="speech_type"/>
+		<result property="content" jdbcType="VARCHAR" column="content"/>
+		<result property="remarks" jdbcType="VARCHAR" column="remarks"/>
+		<result property="insertTime" jdbcType="DATE" column="insert_time"/>
+		<result property="updateTime" jdbcType="DATE" column="update_time"/>
+	</resultMap>
+	<resultMap id="countbytype" type="HashMap">
+		<result property="key" jdbcType="VARCHAR" column="speech_type" />
+		<result property="value" jdbcType="INTEGER" column="count" />
+	</resultMap>
+	<select id="findPageBreakByCondition" parameterType="com.druid.test.abstracts.SpeechConditionVO" resultMap="rm">
+		SELECT * FROM rep_speech t
+		LIMIT 0, 10
+
+	</select>
+
+</mapper>
+
